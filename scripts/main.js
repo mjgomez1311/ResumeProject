@@ -1,0 +1,1 @@
+"use strict";$(document).ready(function(){$(".slider").slider(),$("ul.tabs").tabs(),$("#fullpage").fullpage({menu:"#nav",anchors:["a","b","c","d","e"],normalScrollElements:"#nav",paddingTop:0,paddingBottom:0,responsiveWidth:640,css3:!0})}),$("button").click(function(){$("html, body").animate({scrollTop:$("#sd").offset().top},2e3)});
