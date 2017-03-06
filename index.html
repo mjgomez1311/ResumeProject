@@ -1,0 +1,365 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>resumeProject</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/bower_components/fullpage.js/dist/jquery.fullpage.css" />
+    <link rel="stylesheet" href="/bower_components/materialize/bin/materialize.css" />
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="styles/main.css">
+
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+  </head>
+  <body>
+    <nav>
+    <div class="nav-wrapper #2196f3 blue">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#sa">Home</a></li>
+        <li><a href="#sb">About</a></li>
+        <li><a href="#sc">Skills</a></li>
+        <li><a href="#sd">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+    <div id="fullpage">
+        <div id="sa" class="section">
+          <div class="hero-unit">
+            <h1 class="intro">Hello!</h1>
+            <p>My name is Michael Gomez</p>
+            <p>Let me design your website!</p>
+            <br>
+            <a href="#sd" class="button animated pulse infinite #2196f3 blue">Message Me!</a>
+          </div>
+        </div>
+        <div id="sb" class="section">
+          <div class="row">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col s6"><a href="#test1">Education</a></li>
+                <li class="tab col s6"><a href="#test2">Experience</a></li>
+              </ul>
+            </div>
+            <div id="test1" class="col s12">
+              <div class="card horizontal" id="firstCard">
+                <div class="card-image">
+                  <img class="activator" src="images/ucfLogo.jpg">
+                </div>
+                <div class="card-content">
+                  <span class="card-title">University of Central Florida</span>
+                  <p>Current full time student - Digital Media - Web Design, B.A.</p>
+                  <br>
+                  <span class="card-title">Valencia College</span>
+                  <p>Associate in Arts Degree- 2014</p>
+                  <br>
+                  <span class="card-title">Florida International University</span>
+                  <p>General Studies- 2011-2013</p>
+                  <br>
+                  <span class="card-title">John A. Ferguson Sr High</span>
+                  <p>Honor Student - 2011</p>
+              </div>
+              </div>
+          </div>
+            <div id="test2" class="col s12">
+              <div id="test2" class="slider">
+                <ul class="slides">
+                  <li>
+                    <img src="images/Capture1.png" class="responsive-img">
+                    <div class="caption center-align">
+              <h3>Canvas Animation</h3>
+              <h5 class="light grey-text text-lighten-3">HTML/ CSS/ Javascript</h5>
+              </div>
+              </li>
+              <li>
+              <img src="images/Capture2.png" class="responsive-img">
+              <div class="caption left-align">
+              <h3>More Canvas Animation</h3>
+              </div>
+              </li>
+              <li>
+              <img src="images/Capture3.png" class="responsive-img">
+              <div class="caption right-align">
+              <h3>Frontend Websites</h3>
+              <h5 class="light grey-text text-lighten-3">HTML/ CSS</h5>
+              </div>
+              </li>
+              <li>
+              <img src="images/Capture4.png" class="responsive-img">
+              </li>
+              <li>
+              <img src="images/Capture5.png" class="responsive-img">
+              <div class="caption center-align">
+              <h3>Server-side Scripting</h3>
+              <h5 class="light grey-text text-lighten-3">PHP/ MySQL</h5>
+              </div>
+              </li>
+              <li>
+              <img src="images/Capture6.png" class="responsive-img">
+              <div class="caption center-align">
+              <h3>Frameworks</h3>
+              <h5 class="dark grey-text text-lighten-3">AJAX/ Materialize/ Bootstrap</h5>
+              </div>
+              </li>
+              <li>
+              <img src="images/Capture7.png" class="responsive-img">
+              </li>
+              </ul>
+              </div>
+            </div>
+          </div>
+     </div>
+
+        <div id="sc" class="section">
+            <h2>Skills</h2>
+            <p>Here's some of what I can do:</p>
+            <div id='dashboard'>
+          <script>
+            function dashboard(id, fData){
+                var barColor = 'steelblue';
+                function segColor(c){ return {Advanced:"#41ab5d", Intermediate:"#e08214", Beginner:"#807dba"}[c]; }
+
+
+
+    fData.forEach(function(d){d.total=d.freq.Beginner+d.freq.Intermediate+d.freq.Advanced;});
+
+
+    function histoGram(fD){
+        var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
+        hGDim.w = 700 - hGDim.l - hGDim.r,
+        hGDim.h = 300 - hGDim.t - hGDim.b;
+
+
+        var hGsvg = d3.select(id).append("svg")
+            .attr("width", hGDim.w + hGDim.l + hGDim.r)
+            .attr("height", hGDim.h + hGDim.t + hGDim.b).append("g")
+            .attr("transform", "translate(" + hGDim.l + "," + hGDim.t + ")");
+
+
+        var x = d3.scale.ordinal().rangeRoundBands([0, hGDim.w], 0.1)
+                .domain(fD.map(function(d) { return d[0]; }));
+
+
+        hGsvg.append("g").attr("class", "x axis")
+            .attr("transform", "translate(0," + hGDim.h + ")")
+            .call(d3.svg.axis().scale(x).orient("bottom"));
+
+
+        var y = d3.scale.linear().range([hGDim.h, 0])
+                .domain([0, d3.max(fD, function(d) { return d[1]; })]);
+
+
+        var bars = hGsvg.selectAll(".bar").data(fD).enter()
+                .append("g").attr("class", "bar");
+
+
+        bars.append("rect")
+            .attr("x", function(d) { return x(d[0]); })
+            .attr("y", function(d) { return y(d[1]); })
+            .attr("width", x.rangeBand())
+            .attr("height", function(d) { return hGDim.h - y(d[1]); })
+            .attr('fill',barColor)
+            .on("mouseover",mouseover)
+            .on("mouseout",mouseout);
+
+
+
+
+        function mouseover(d){
+
+            var st = fData.filter(function(s){ return s.progr == d[0];})[0],
+                nD = d3.keys(st.freq).map(function(s){ return {type:s, freq:st.freq[s]};});
+
+
+            pC.update(nD);
+            leg.update(nD);
+        }
+
+        function mouseout(d){
+            pC.update(tF);
+            leg.update(tF);
+        }
+
+
+        hG.update = function(nD, color){
+            y.domain([0, d3.max(nD, function(d) { return d[1]; })]);
+
+            var bars = hGsvg.selectAll(".bar").data(nD);
+
+            bars.select("rect").transition().duration(500)
+                .attr("y", function(d) {return y(d[1]); })
+                .attr("height", function(d) { return hGDim.h - y(d[1]); })
+                .attr("fill", color);
+
+            bars.select("text").transition().duration(500)
+                .text(function(d){ return d3.format(",")(d[1])})
+                .attr("y", function(d) {return y(d[1])-5; });
+        }
+        return hG;
+    }
+
+    function pieChart(pD){
+        var pC ={},    pieDim ={w:250, h: 250};
+        pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
+
+        var piesvg = d3.select(id).append("svg")
+            .attr("width", pieDim.w).attr("height", pieDim.h).append("g")
+            .attr("transform", "translate("+pieDim.w/2+","+pieDim.h/2+")");
+
+        var arc = d3.svg.arc().outerRadius(pieDim.r - 10).innerRadius(0);
+
+        var pie = d3.layout.pie().sort(null).value(function(d) { return d.freq; });
+
+        piesvg.selectAll("path").data(pie(pD)).enter().append("path").attr("d", arc)
+            .each(function(d) { this._current = d; })
+            .style("fill", function(d) { return segColor(d.data.type); })
+            .on("mouseover",mouseover).on("mouseout",mouseout);
+
+        pC.update = function(nD){
+            piesvg.selectAll("path").data(pie(nD)).transition().duration(500)
+                .attrTween("d", arcTween);
+        }
+
+        function mouseover(d){
+            hG.update(fData.map(function(v){
+                return [v.Program,v.freq[d.data.type]];}),segColor(d.data.type));
+        }
+
+        function mouseout(d){
+            hG.update(fData.map(function(v){
+                return [v.Program,v.total];}), barColor);
+        }
+
+        function arcTween(a) {
+            var i = d3.interpolate(this._current, a);
+            this._current = i(0);
+            return function(t) { return arc(i(t));    };
+        }
+        return pC;
+    }
+
+    function legend(lD){
+        var leg = {};
+
+        var legend = d3.select(id).append("table").attr('class','legend');
+
+        var tr = legend.append("tbody").selectAll("tr").data(lD).enter().append("tr");
+
+        tr.append("td").append("svg").attr("width", '16').attr("height", '16').append("rect")
+            .attr("width", '16').attr("height", '16')
+			.attr("fill",function(d){ return segColor(d.type); });
+
+        tr.append("td").text(function(d){ return d.type;});
+
+
+
+
+        function getLegend(d,aD){
+            return d3.format("%")(d.freq/d3.sum(aD.map(function(v){ return v.freq; })));
+        }
+
+        return leg;
+    }
+
+
+    var tF = ['Advanced','Intermediate','Beginner'].map(function(d){
+        return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))};
+    });
+
+
+    var sF = fData.map(function(d){return [d.Program,d.total];});
+
+    var hG = histoGram(sF),
+        pC = pieChart(tF),
+        leg= legend(tF);
+}
+</script>
+
+<script>
+var freqData=[
+{Program:'HTML',freq:{Beginner:10, Intermediate:10, Advanced:80}}
+,{Program:'CSS',freq:{Beginner:10, Intermediate:10, Advanced:70}}
+,{Program:'Javascript',freq:{Beginner:10, Intermediate:10, Advanced:50}}
+,{Program:'PHP',freq:{Beginner:10, Intermediate:40, Advanced:10}}
+,{Program:'MySql',freq:{Beginner:10, Intermediate:35, Advanced:10}}
+,{Program:'Materialize',freq:{Beginner:30, Intermediate:10, Advanced:10}}
+,{Program:'AJAX',freq:{Beginner:25, Intermediate:10, Advanced:10}}
+,{Program:'Bootstrap',freq:{Beginner:20, Intermediate:10, Advanced:10}}
+];
+
+dashboard('#dashboard',freqData);
+</script>
+            </div>
+        </div>
+        <div id="sd" class="section">
+          <h2>Contact Me</h2>
+          <p>Feel free to shoot me an email you're interested in collaborating or just want to say hello.</p>
+          <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="name" type="text" class="validate">
+          <label for="name">Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+     <form class="col s12">
+       <div class="row">
+         <div class="input-field col s10">
+           <textarea id="textarea1" class="materialize-textarea"></textarea>
+           <label for="textarea1">Message</label>
+         </div>
+         <br><br> <br><br> <br><br>
+         <div class="submitButton">
+          <a href="#" class="button #2196f3 blue">Submit</a>
+        </div>
+       </div>
+     </form>
+   </div>
+    </form>
+  </div>
+        </div>
+        </div>
+     </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="/bower_components/d3/d3.js"></script>
+    <script src="/bower_components/fullpage.js/dist/jquery.fullpage.js"></script>
+    <script src="/bower_components/materialize/bin/materialize.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
